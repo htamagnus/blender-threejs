@@ -71,3 +71,5 @@ rayCaster.setFromCamera(mousePosition, camera);  // Lança um raio do mouse para
 window.addEventListener('resize', function() { ... });  // Atualiza a câmera e o renderizador quando a janela é redimensionada.
 ~~~
 ---
+#### Resultado: 
+![image](https://github.com/htamagnus/three.js-introduction/assets/85269068/7a624feb-0e87-48e1-9de3-1121b4a28ddd)
