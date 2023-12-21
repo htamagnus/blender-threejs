@@ -1542,7 +1542,7 @@
 81/home/agatha.magnus/Documents/threejs/node_modules/@parcel/cache/src/LMDBCache.js1703187113302169790 0
 103/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/features/css-content-visibility.js1703187113430171847 0
 111/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/features/img-naturalwidth-naturalheight.js1703187113518173261 0
-55/home/agatha.magnus/Documents/threejs/src/js/scripts.js1703186823797499436 0
+55/home/agatha.magnus/Documents/threejs/src/js/scripts.js1703188087129448212 0
 101/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/features/css-at-counter-style.js1703187113422171719 0
 90/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/features/flow-root.js1703187113506173069 0
 92/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/features/blobbuilder.js1703187113382171075 0
@@ -1760,7 +1760,7 @@
 101/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/features/alternate-stylesheet.js1703187113338170368 0
 82/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/regions/HN.js1703187113514173197 0
 81/home/agatha.magnus/Documents/threejs/node_modules/semver/internal/identifiers.js1703187113310169918 0
-42/home/agatha.magnus/Documents/threejs/dist1703187329673640465 1
+42/home/agatha.magnus/Documents/threejs/dist1703188087329450836 1
 92/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/features/videotracks.js1703187113606174676 0
 82/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/regions/MZ.js1703187113550173776 0
 88/home/agatha.magnus/Documents/threejs/node_modules/@parcel/core/test/Environment.test.js1703187113410171526 0
@@ -1797,7 +1797,7 @@
 74/home/agatha.magnus/Documents/threejs/node_modules/@lezer/common/README.md1703187113306169854 0
 85/home/agatha.magnus/Documents/threejs/node_modules/@mischnic/json-sourcemap/README.md1703187113242168825 0
 70/home/agatha.magnus/Documents/threejs/node_modules/dat.gui/src/dat/dom1703187113378171012 1
-47/home/agatha.magnus/Documents/threejs/README.md1703186823777499113 0
+47/home/agatha.magnus/Documents/threejs/README.md1703187413278978463 0
 85/home/agatha.magnus/Documents/threejs/node_modules/node-addon-api/tools/check-napi.js1703187113322170112 0
 89/home/agatha.magnus/Documents/threejs/node_modules/three/examples/js/loaders/VTKLoader.js1703187113866178855 0
 86/home/agatha.magnus/Documents/threejs/node_modules/three/src/core/GLBufferAttribute.js1703187113666175640 0
@@ -1836,7 +1836,7 @@
 72/home/agatha.magnus/Documents/threejs/node_modules/dat.gui/src/dat/utils1703187113402171397 1
 85/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/features/ping.js1703187113558173904 0
 102/home/agatha.magnus/Documents/threejs/node_modules/three/examples/jsm/renderers/nodes/core/CodeNode.js1703187113534173519 0
-60/home/agatha.magnus/Documents/threejs/dist/index.64a4978e.js1703187329657640209 0
+60/home/agatha.magnus/Documents/threejs/dist/index.64a4978e.js1703188087313450626 0
 93/home/agatha.magnus/Documents/threejs/node_modules/@parcel/core/src/requests/TargetRequest.js1703187113474172554 0
 82/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/regions/GP.js1703187113514173197 0
 82/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/regions/ES.js1703187113502173004 0
@@ -1865,7 +1865,7 @@
 102/home/agatha.magnus/Documents/threejs/node_modules/three/examples/jsm/shaders/GammaCorrectionShader.js1703187113662175576 0
 96/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/features/matchesselector.js1703187113538173583 0
 74/home/agatha.magnus/Documents/threejs/node_modules/semver/functions/cmp.js1703187113258169083 0
-64/home/agatha.magnus/Documents/threejs/dist/index.64a4978e.js.map1703187329669640402 0
+64/home/agatha.magnus/Documents/threejs/dist/index.64a4978e.js.map1703188087325450784 0
 100/home/agatha.magnus/Documents/threejs/node_modules/three/examples/js/postprocessing/DotScreenPass.js1703187113578174226 0
 56/home/agatha.magnus/Documents/threejs/node_modules/chalk1703187113278169404 1
 100/home/agatha.magnus/Documents/threejs/node_modules/caniuse-lite/data/features/link-rel-preconnect.js1703187113534173519 0
