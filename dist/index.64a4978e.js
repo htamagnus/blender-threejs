@@ -587,7 +587,7 @@ var _nebulaJpgDefault = parcelHelpers.interopDefault(_nebulaJpg);
 var _starsJpg = require("../img/stars.jpg");
 var _starsJpgDefault = parcelHelpers.interopDefault(_starsJpg);
 // Obtém o caminho do modelo GLTF usando o objeto import.meta.url
-const monkeyUrl = new URL(require("46d709d3e4bdc395"));
+const houseUrl = new URL(require("711e27f32dd209d6"));
 // Cria um renderizador WebGL
 const renderer = new _three.WebGLRenderer();
 renderer.shadowMap.enabled = true; // Ativa mapeamento de sombras
@@ -599,32 +599,9 @@ const scene = new _three.Scene();
 const camera = new _three.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
 // Adiciona controles de órbita para facilitar a navegação
 const orbit = new (0, _orbitControlsJs.OrbitControls)(camera, renderer.domElement);
-// Cria um eixo de referência visual
-const axesHelper = new _three.AxesHelper(5);
-scene.add(axesHelper);
 // Define a posição inicial da câmera e atualiza os controles
 camera.position.set(-10, 30, 30);
 orbit.update();
-// Cria um cubo e a adiciona à cena
-const boxGeometry = new _three.BoxGeometry();
-const boxMaterial = new _three.MeshBasicMaterial({
-    color: 0x00ff00
-});
-const box = new _three.Mesh(boxGeometry, boxMaterial);
-scene.add(box);
-// Cria um plano e o adiciona à cena
-const planeGeometry = new _three.PlaneGeometry(30, 30);
-const planeMaterial = new _three.MeshStandardMaterial({
-    color: 0xffffff,
-    side: _three.DoubleSide
-});
-const plane = new _three.Mesh(planeGeometry, planeMaterial);
-scene.add(plane);
-plane.rotation.x = -0.5 * Math.PI;
-plane.receiveShadow = true;
-// Cria um auxiliar de grid e o adiciona à cena
-const gridHelper = new _three.GridHelper(30);
-scene.add(gridHelper);
 // Cria uma esfera e a adiciona à cena
 const sphereGeometry = new _three.SphereGeometry(4, 50, 50);
 const sphereMaterial = new _three.MeshStandardMaterial({
@@ -649,107 +626,37 @@ const sLightHelper = new _three.SpotLightHelper(spotLight);
 scene.add(sLightHelper);
 // Define uma névoa para a cena
 scene.fog = new _three.FogExp2(0xffffff, 0.01);
-// Carrega texturas para criar um cubemap e define como fundo da cena
-const textureLoader = new _three.TextureLoader();
-const cubeTextureLoader = new _three.CubeTextureLoader();
-scene.background = cubeTextureLoader.load([
-    // Passa um array com uma imagem para cada lado do cubo
-    (0, _nebulaJpgDefault.default),
-    (0, _nebulaJpgDefault.default),
-    (0, _starsJpgDefault.default),
-    (0, _starsJpgDefault.default),
-    (0, _starsJpgDefault.default),
-    (0, _starsJpgDefault.default)
-]);
-// Cria um segundo cubo com material múltiplo e a adiciona à cena
-const box2Geometry = new _three.BoxGeometry(4, 4, 4);
-const box2Material = new _three.MeshBasicMaterial({
-});
-const box2MultiMaterial = [
-    new _three.MeshBasicMaterial({
-        map: textureLoader.load((0, _starsJpgDefault.default))
-    }),
-    new _three.MeshBasicMaterial({
-        map: textureLoader.load((0, _starsJpgDefault.default))
-    }),
-    new _three.MeshBasicMaterial({
-        map: textureLoader.load((0, _nebulaJpgDefault.default))
-    }),
-    new _three.MeshBasicMaterial({
-        map: textureLoader.load((0, _starsJpgDefault.default))
-    }),
-    new _three.MeshBasicMaterial({
-        map: textureLoader.load((0, _nebulaJpgDefault.default))
-    }),
-    new _three.MeshBasicMaterial({
-        map: textureLoader.load((0, _starsJpgDefault.default))
-    })
-];
-const box2 = new _three.Mesh(box2Geometry, box2MultiMaterial);
-scene.add(box2);
-box2.position.set(0, 15, 10);
-// Cria um plano com wireframe e o adiciona à cena
-const plane2Geometry = new _three.PlaneGeometry(10, 10, 10, 10);
-const plane2Material = new _three.MeshBasicMaterial({
-    color: 0xffffff,
-    wireframe: true
-});
-const plane2 = new _three.Mesh(plane2Geometry, plane2Material);
-scene.add(plane2);
-plane2.position.set(10, 10, 15);
-// Modifica aleatoriamente alguns pontos do plano
-plane2.geometry.attributes.position.array[0] -= 10 * Math.random();
-plane2.geometry.attributes.position.array[1] -= 10 * Math.random();
-plane2.geometry.attributes.position.array[2] -= 10 * Math.random();
-const lastPointZ = plane2.geometry.attributes.position.array.length - 1;
-plane2.geometry.attributes.position.array[lastPointZ] -= 10 * Math.random();
-// Cria uma esfera com material shader e a adiciona à cena
-const sphere2Geometry = new _three.SphereGeometry(4);
-const sphere2Material = new _three.ShaderMaterial({
-    vertexShader: document.getElementById("vertexShader").textContent,
-    fragmentShader: document.getElementById("fragmentShader").textContent
-});
-const sphere2 = new _three.Mesh(sphere2Geometry, sphere2Material);
-scene.add(sphere2);
-sphere2.position.set(-5, 10, 10);
-// Carrega um modelo GLTF de um macaco e adiciona à cena
+// Carrega um modelo GLTF de uma casa e adiciona à cena
 const assetLoader = new (0, _gltfloaderJs.GLTFLoader)();
 let mixer;
-assetLoader.load(monkeyUrl.href, function(gltf) {
+assetLoader.load(houseUrl.href, function(gltf) {
     const model = gltf.scene;
     scene.add(model);
     model.position.set(-12, 4, 10);
-    // Cria um mixer para animações e obtém as animações do modelo
-    mixer = new _three.AnimationMixer(model);
-    const clips = gltf.animations;
-    // Reproduz uma animação específica
-    const clip = _three.AnimationClip.findByName(clips, "myAnimation");
-    const action = mixer.clipAction(clip);
-}, undefined, function(error) {
+    // Adicione uma luz direcional
+    const directionalLight = new _three.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(0, 10, 0); // Posição da luz
+    scene.add(directionalLight);
+    // Habilitar sombras para a luz direcional
+    directionalLight.castShadow = true;
+    // Configurações opcionais para sombras mais suaves
+    directionalLight.shadow.mapSize.width = 1024;
+    directionalLight.shadow.mapSize.height = 1024;
+    directionalLight.shadow.camera.near = 0.5;
+    directionalLight.shadow.camera.far = 500;
+    // Permitir que os objetos recebam sombras
+    model.traverse((child)=>{
+        if (child.isMesh) {
+            child.castShadow = true;
+            child.receiveShadow = true;
+            // Configurar o material para sombras mais suaves
+            child.material.shadowSide = _three.FrontSide;
+            child.material.shadowBias = -0.002;
+        }
+    });
+}, function(error) {
     console.error(error);
 });
-// Cria uma interface gráfica interativa usando dat.GUI
-const gui = new _datGui.GUI();
-// Opções de controle para a interface gráfica
-const options = {
-    sphereColor: "#ffea00",
-    wireframe: false,
-    speed: 0.01,
-    angle: 0.2,
-    penumbra: 0,
-    intensity: 1
-};
-// Adiciona opções de controle à interface gráfica
-gui.addColor(options, "sphereColor").onChange(function(e) {
-    sphere.material.color.set(e);
-});
-gui.add(options, "wireframe").onChange(function(e) {
-    sphere.material.wireframe = e;
-});
-gui.add(options, "speed", 0, 0.1);
-gui.add(options, "angle", 0, 1);
-gui.add(options, "penumbra", 0, 1);
-gui.add(options, "intensity", 0, 1);
 let step = 0;
 // Registra a posição do mouse para interação
 const mousePosition = new _three.Vector2();
@@ -759,44 +666,17 @@ window.addEventListener("mousemove", function(e) {
 });
 // Configura um Raycaster para detecção de interação do mouse
 const rayCaster = new _three.Raycaster();
-// Identificador da esfera para detecção de colisão
-const sphereId = sphere.id;
-box2.name = "theBox"; // Define um nome para a caixa
-// Cria um relógio para animações
-const clock = new _three.Clock();
 // Função de animação principal
 function animate(time) {
     // Atualiza o mixer em cada quadro se existir
     if (mixer) mixer.update(clock.getDelta());
-    // Rotaciona a caixa
-    box.rotation.x = time / 1000;
-    box.rotation.y = time / 1000;
     // Move a esfera para cima e para baixo
-    step += options.speed;
     sphere.position.y = 10 * Math.abs(Math.sin(step));
-    // Atualiza parâmetros da luz de ponto
-    spotLight.angle = options.angle;
-    spotLight.penumbra = options.penumbra;
-    spotLight.intensity = options.intensity;
     // Atualiza o auxiliar visual da luz de ponto
     sLightHelper.update();
     // Lança um raio do mouse na cena e verifica colisões
     rayCaster.setFromCamera(mousePosition, camera);
     const intersects = rayCaster.intersectObjects(scene.children);
-    // Responde às colisões
-    for(let i = 0; i < intersects.length; i++){
-        if (intersects[i].object.id === sphereId) intersects[i].object.material.color.set(0xff0000);
-        if (intersects[i].object.name === "theBox") {
-            intersects[i].object.rotation.x = time / 1000;
-            intersects[i].object.rotation.y = time / 1000;
-        }
-    }
-    // Modifica aleatoriamente alguns pontos do plano
-    plane2.geometry.attributes.position.array[0] = 10 * Math.random();
-    plane2.geometry.attributes.position.array[1] = 10 * Math.random();
-    plane2.geometry.attributes.position.array[2] = 10 * Math.random();
-    plane2.geometry.attributes.position.array[lastPointZ] = 10 * Math.random();
-    plane2.geometry.attributes.position.needsUpdate = true;
     // Renderiza a cena
     renderer.render(scene, camera);
 }
@@ -809,7 +689,7 @@ window.addEventListener("resize", function() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-},{"three":"ktPTu","three/examples/jsm/controls/OrbitControls.js":"7mqRv","dat.gui":"k3xQk","three/examples/jsm/loaders/GLTFLoader.js":"dVRsF","../img/nebula.jpg":"1M8qX","../img/stars.jpg":"7eadv","46d709d3e4bdc395":"eGUsV","@parcel/transformer-js/src/esmodule-helpers.js":"64BNM"}],"ktPTu":[function(require,module,exports) {
+},{"three":"ktPTu","three/examples/jsm/controls/OrbitControls.js":"7mqRv","dat.gui":"k3xQk","three/examples/jsm/loaders/GLTFLoader.js":"dVRsF","../img/nebula.jpg":"1M8qX","../img/stars.jpg":"7eadv","711e27f32dd209d6":"c8jsx","@parcel/transformer-js/src/esmodule-helpers.js":"64BNM"}],"ktPTu":[function(require,module,exports) {
 /**
  * @license
  * Copyright 2010-2021 Three.js Authors
@@ -35433,9 +35313,9 @@ exports.getOrigin = getOrigin;
 },{}],"7eadv":[function(require,module,exports) {
 module.exports = require("a0751e077cecf056").getBundleURL("e6MYJ") + "stars.a1d7fe60.jpg" + "?" + Date.now();
 
-},{"a0751e077cecf056":"9NhtS"}],"eGUsV":[function(require,module,exports) {
-module.exports = require("6799fbe47a75a114").getBundleURL("e6MYJ") + "monkey.d5659f94.glb" + "?" + Date.now();
+},{"a0751e077cecf056":"9NhtS"}],"c8jsx":[function(require,module,exports) {
+module.exports = require("21bcbfabd8e3e6ef").getBundleURL("e6MYJ") + "house.ed2e8be3.glb" + "?" + Date.now();
 
-},{"6799fbe47a75a114":"9NhtS"}]},["5mvvs","goJYj"], "goJYj", "parcelRequire2f4f")
+},{"21bcbfabd8e3e6ef":"9NhtS"}]},["5mvvs","goJYj"], "goJYj", "parcelRequire2f4f")
 
 //# sourceMappingURL=index.64a4978e.js.map
